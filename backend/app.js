@@ -21,7 +21,7 @@ let book = require('./routes/book');
 
 // Database Connection //
 
-mongoose.connect('mongodb://zaheeruddin:zaheeruddin@ds149373.mlab.com:49373/books_club_db');
+mongoose.connect('mongodb://XXXXXX:xxxxxx:xxxxx/xxxxx');
 
 // dbUrl = 'mongodb://localhost:27017/books_club_db';
 // mongoose.connect(dbUrl);
