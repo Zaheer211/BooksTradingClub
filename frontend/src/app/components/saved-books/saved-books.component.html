@@ -1,0 +1,89 @@
+<header>
+  <div class="navbar-fixed">
+      <nav class="cyan darken-3">
+          <div class="nav-wrapper">
+              <a routerLink='' class="brand-logo"><img src="http://www.freeiconspng.com/uploads/books-icon--circle-iconset--martz90-18.png" alt="brand-img" style="height: 50px; width: 50px;" class="square responsive-img"></a>
+              <ul class="right hide-on-med-and-down">
+                   <li><a routerLink="">Home</a></li>
+                   <li><a routerLink='/books'>Books</a></li>
+              </ul>
+          </div>
+      </nav>
+  </div>
+</header>
+
+<body>
+  <main>
+    <div class="row">
+      <div class="col l2 m3 s4 side-panel">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <h5>Book Trading Club</h5>
+          <div class="divider"></div>
+              <ul class="collection">
+                <a routerLink='' class="collection-item">Home</a>
+                <a routerLink='/dashboard/{{this.username}}' class="collection-item">Dashboard</a>
+                <a routerLink='/books' class="collection-item">All Books</a>
+                <a routerLink='/borrowedBooks/{{this.username}}' class="collection-item">Borrowed Books</a>
+                <a class="collection-item active">Saved Books</a>
+              </ul>
+        </div>
+      </div>
+      <div class="col l10 m9 s8">
+        <div class="container">
+          <div class="content">
+            <div class="row animated fadeIn">
+              <div class="col s12">
+                <h4>Saved Books</h4>
+                <div class="divider"></div>
+                <div *ngIf="!this.savedBooks">
+                    <p>You don't have any Book Saved.</p>
+                </div>
+                <div *ngIf="this.savedBooks">
+                  <div *ngIf="this.savedBooks.length === 0">
+                      <p>You don't have any Book Saved.</p>
+                  </div>
+                  <ul *ngFor="let book of this.savedBooks" class="collection">
+                    <li class="collection-item avatar">
+                      <img src="{{book.coverUrl}}" alt="" class="circle">
+                      <span class="title"><b>Title:</b> {{book.title}}</span>
+                      <p><b>Author: </b> {{book.author}} <br>
+                         <b>Description</b> {{book.description}}<br>
+                         <b>Check Details: </b><a routerLink="/book/{{book.title}}">here</a>
+                      </p>
+                      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                    </li>
+                  </ul>
+                </div>
+                <button type="button" routerLink="/books" class="btn btn-flat cyan darken-4 waves-effect waves-light white-text">Explore more Books</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--footer-->
+  <footer class="page-footer cyan darken-3">
+      <div class="container">
+          <div class="row">
+              <div class="col l6 s12">
+                  <h5 class="white-text">BookTradingClub</h5>
+                  <p class="grey-text text-lighten-4">You can contact us at uuid@uuid.com!</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Contact</h5>
+                  <ul>
+                      <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
+                      <li><a class="grey-text text-lighten-3" href="#!">GitHub</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="footer-copyright cyan darken-4">
+          <div class="container">
+              © 2017 Copyright BookTradingClub
+          </div>
+      </div>
+  </footer>
+</body>

@@ -1,0 +1,49 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.brand-logo {
+  margin-left: 2%;
+  margin-top: 3px;
+}
+
+.content {
+  margin-top: 5%;
+}
+
+a {
+  cursor: pointer;
+}
+
+.addBook {
+  margin-top: 5%;
+  display: none;
+}
+
+.btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 0.5rem;
+    font-size: 12px;
+}
+
+.removing {
+    -webkit-animation: fadeOut 1000ms;
+    -moz-animation: fadeOut 1000ms;
+    animation: fadeOut 1000ms;
+}
+
+@media only screen and (max-width: 600px) {
+  .side-panel{
+    font-size: 6px;
+  }
+  .side-panel li {
+    margin-left: 0px;
+  }
+}

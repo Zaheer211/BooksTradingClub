@@ -1,0 +1,85 @@
+<header>
+  <div class="navbar-fixed">
+      <nav class="cyan darken-3">
+          <div class="nav-wrapper">
+              <a routerLink='' class="brand-logo"><img src="http://www.freeiconspng.com/uploads/books-icon--circle-iconset--martz90-18.png" alt="brand-img" style="height: 50px; width: 50px;" class="square responsive-img"></a>
+              <a data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a routerLink="">Home</a></li>
+                <li><a routerLink="/dashboard/{{this.username}}">Dashboard</a></li>
+              </ul>
+          </div>
+      </nav>
+  </div>
+</header>
+
+<body>
+  <main>
+      <div class="row">
+        <div class="col l2 m3 s4 side-panel">
+          <div class="card-panel grey lighten-5 z-depth-1">
+            <h5>Book Trading Club</h5>
+            <div class="divider"></div>
+                <ul class="collection">
+                  <a routerLink='' class="collection-item">Home</a>
+                  <a routerLink='/dashboard/{{this.username}}' class="collection-item">Dashboard</a>
+                  <a class="collection-item active">All Books</a>
+                  <a routerLink='/borrowedBooks/{{this.username}}' class="collection-item">Borrowed Books</a>
+                  <a routerLink="/savedBooks/{{this.username}}" class="collection-item">Saved Books</a>
+                </ul>
+          </div>
+        </div>
+        <div class="col l10 m9 s8 animated fadeIn">
+          <div class="container">
+            <div class="content">
+              <p>Books from all over the world!</p>
+            </div>
+            <div class="divider"></div>
+            <div class="row books-list">
+              <div *ngFor="let book of this.allBooks" class="col l4 m6 s12 center">
+                <div class="card-panel grey lighten-5 z-depth-1 hoverable">
+                  <div class="row valign-wrapper">
+                    <div class="col s12">
+                      <img routerLink="/book/{{book.title}}" class="square responsive-img" src="{{book.coverUrl}}" alt="{{book.title}}">
+                    </div>
+                  </div>
+                    <div class="row buttons">
+                      <div class="col l6 m6 s6 left-align">
+                          <button (click)="saveRequestedBook($event)" id="{{book.title}}" class="btn btn-flat cyan darken-4 waves-effect waves-light white-text">Request</button>
+                      </div>
+                      <div class="col l6 m6 s6 right-align">
+                          <button (click)="saveBook($event)" id="{{book._id}}" class="btn btn-flat cyan darken-4 waves-effect waves-light white-text">Save</button>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </main>
+
+  <!--footer-->
+  <footer class="page-footer cyan darken-3">
+      <div class="container">
+          <div class="row">
+              <div class="col l6 s12">
+                  <h5 class="white-text">BookTradingClub</h5>
+                  <p class="grey-text text-lighten-4">You can contact us at uuid@uuid.com!</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Contact</h5>
+                  <ul>
+                      <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
+                      <li><a class="grey-text text-lighten-3" href="#!">GitHub</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="footer-copyright cyan darken-4">
+          <div class="container">
+              © 2017 Copyright BookTradingClub
+          </div>
+      </div>
+  </footer>
+</body>

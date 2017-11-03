@@ -1,0 +1,24 @@
+
+.brand-logo{
+  margin-left: 2%;
+  margin-top: 3px;
+}
+
+.brand-img{
+  margin-top: 5%;
+}
+
+.brand-name{
+  font-family: 'Lobster', cursive;
+}
+
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}

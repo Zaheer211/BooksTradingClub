@@ -1,0 +1,103 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.brand-logo {
+  margin-left: 2%;
+  margin-top: 3px;
+}
+
+.content {
+  margin-top: 5%;
+}
+
+.container {
+  width: 80%;
+}
+
+.books-list {
+  margin-top: 3%;
+}
+
+@media only screen and (max-width: 600px) {
+  .side-panel{
+    font-size: 6px;
+  }
+  .side-panel li {
+    margin-left: 0px;
+  }
+}
+
+/* Change above this line only */
+
+body img {
+  width: 300px;
+  height: 400px;
+}
+
+@media only screen and (max-width: 1520px){
+  body img {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 980px){
+  body img {
+    width: 300px;
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 780px){
+  body img {
+    width: 200px;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 620px){
+  body img {
+    width: 300px;
+    height: 400px;
+  }
+}
+
+.content .card-panel {
+  width: 350px;
+  height: 500px;
+}
+
+@media only screen and (max-width: 1520px) {
+  .content .card-panel {
+    width: 250px;
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .content .card-panel {
+    width: 350px;
+    height: 500px;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  .content .card-panel {
+    width: 250px;
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .content .card-panel {
+    width: 350px;
+    height: 500px;
+  }
+}

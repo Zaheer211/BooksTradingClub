@@ -1,0 +1,83 @@
+
+<header>
+  <div class="navbar-fixed">
+      <nav class="cyan darken-3">
+          <div class="nav-wrapper">
+              <a routerLink='' class="brand-logo"><img src="http://www.freeiconspng.com/uploads/books-icon--circle-iconset--martz90-18.png" alt="brand-img" style="height: 50px; width: 50px;" class="square responsive-img"></a>
+              <a data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+              <ul class="right hide-on-med-and-down">
+                   <li><a routerLink="">Home</a></li>
+              </ul>
+          </div>
+      </nav>
+  </div>
+</header>
+<body>
+  <main>
+    <div class="container">
+
+      <!-- SignUp Form -->
+
+      <div class="row signup-form">
+        <form class="col s12" #createUserForm="ngForm" (ngSubmit)="createUser(createUserForm)">
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="text" name="firstName" class="validate" ngModel>
+              <label for="firstName">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input type="text" name="lastName" class="validate" ngModel>
+              <label for="lastName">Last Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" name="username" class="validate" ngModel>
+              <label for="username">Username</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="email" type="email" class="validate" ngModel>
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="password" type="password" class="validate" ngModel>
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-flat cyan darken-4 waves-effect waves-light white-text">Create Account</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!--footer-->
+  <footer class="page-footer cyan darken-3">
+      <div class="container">
+          <div class="row">
+              <div class="col l6 s12">
+                  <h5 class="white-text">BookTradingClub</h5>
+                  <p class="grey-text text-lighten-4">You can contact us at uuid@uuid.com!</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Contact</h5>
+                  <ul>
+                      <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
+                      <li><a class="grey-text text-lighten-3" href="#!">GitHub</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="footer-copyright cyan darken-4">
+          <div class="container">
+              © 2017 Copyright BookTradingClub
+          </div>
+      </div>
+  </footer>
+</body>

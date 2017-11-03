@@ -1,0 +1,178 @@
+<header>
+  <div class="navbar-fixed">
+      <nav class="cyan darken-3">
+          <div class="nav-wrapper">
+              <a routerLink='' class="brand-logo"><img src="http://www.freeiconspng.com/uploads/books-icon--circle-iconset--martz90-18.png" alt="brand-img" style="height: 50px; width: 50px;" class="square responsive-img"></a>
+              <ul class="right hide-on-med-and-down">
+                   <li><a routerLink="">Home</a></li>
+                   <li><a routerLink='/books'>Books</a></li>
+              </ul>
+          </div>
+      </nav>
+  </div>
+</header>
+
+<body>
+  <main>
+    <div class="row">
+      <div class="col l2 m3 s4 side-panel">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <h5>Book Trading Club</h5>
+          <div class="divider"></div>
+              <ul class="collection">
+                <a routerLink='' class="collection-item">Home</a>
+                <a class="collection-item active">Dashboard</a>
+                <a routerLink='/books' class="collection-item">All Books</a>
+                <a routerLink="/borrowedBooks/{{this.username}}" class="collection-item">Borrowed Books</a>
+                <a routerLink="/savedBooks/{{this.username}}" class="collection-item">Saved Books</a>
+              </ul>
+        </div>
+      </div>
+      <div class="col l10 m9 s8">
+        <div class="container">
+          <div class="content">
+            <ul materialize="collapsible" class="collapsible hoverable" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header">
+                  <i class="material-icons">notifications_active</i>
+                  Books Trade offers
+                  <span *ngIf="this.bookOffers" class="new badge right-align">{{this.bookOffers.length}}</span>
+                  <span class="new badge right-align" *ngIf="!this.bookOffers">0</span>
+                </div>
+                <div *ngIf="this.bookOffers" class="collapsible-body">
+                  <ul *ngFor="let data of this.bookOffers" class="collection">
+                    <li class="collection-item animated avatar">
+                      <img src="{{data.offerBookCoverUrl}}" alt="{{data.offerBook}}" class="circle">
+                      <span class="title"><b>Title: </b>{{data.offerBook}}</span>
+                      <p><b>Offered By: </b>{{data.offerBy}}<br>
+                        <b>Offered On: </b>{{data.offerTime}}
+                      </p>
+                      <button type="button"  (click)="acceptOffer($event)" class="btn btn-small btn-flat cyan darken-4 waves-effect waves-light white-text">Accept</button>
+                      <button type="button" (click)="rejectOffer($event)" class="btn btn-small btn-flat red darken-4 waves-effect waves-light white-text">Decline</button>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <!-- <div> -->
+                <li *ngIf="this.requestedBooksByUser">
+                  <div class="collapsible-header"><i class="material-icons">file_upload</i>Your Requests <span class="badge">{{this.requestedBooksByUser.length}}</span></div>
+                  <div class="collapsible-body">
+
+                      <ul *ngFor="let book of this.requestedBooksByUser" class="collection">
+                        <li class="collection-item avatar">
+                          <img src="{{book.coverUrl}}" alt="{{book.title}}" class="circle">
+                          <span class="title"><b>Book: </b>{{book.title}}</span>
+                          <p><b>Request Status: </b> {{book.requestStatus}} <a routerLink="/borrowedBooks/{{this.username}}" *ngIf="book.requestStatus === 'Accepted'">Check borrowed Books</a><br>
+                            <b>Requested On: </b>{{book.requestTime}}
+                          </p>
+                          <a id="{{book}}" (click)="deleteRequest(book)" class="secondary-content"><i class="material-icons">delete_forever</i></a>
+                        </li>
+                      </ul>
+
+                  </div>
+                </li>
+              <!-- </div> -->
+            </ul>
+
+            <div *ngIf="this.booksByUser" class="row animated fadeIn">
+              <div class="col s12">
+                <h4>Your Books</h4>
+                <div class="divider"></div>
+                <div>
+                  <div *ngIf="this.booksByUser.length === 0" class="">
+                    <p>You do not have any Book.</p>
+                  </div>
+                </div>
+                <ul *ngFor="let book of this.booksByUser" class="collection">
+                  <li class="collection-item avatar">
+                    <img src="{{book.coverUrl}}" alt="" class="circle">
+                    <span class="title"><b>Title:</b> {{book.title}}</span>
+                    <p>
+                      <b>Author: </b> {{book.author}} <br>
+                       <b>Description</b> {{book.description}}<br>
+                       <b>Check Details: </b><a routerLink="/book/{{book.title}}">here</a>
+                    </p>
+                    <a (click)="deleteBook(book)" class="secondary-content"><i class="material-icons">delete_forever</i></a>
+                  </li>
+                </ul>
+                <button type="button" (click)="addNewBookUI()" class="btn btn-flat cyan darken-4 waves-effect waves-light white-text">Add new Book</button>
+
+                <div id="addBook" class="addBook animated">
+                  <h4>Add Book</h4>
+                  <div class="divider"></div>
+                  <div class="row addBook-form">
+                    <form class="col s12" #addBookForm="ngForm" (ngSubmit)="addBook(addBookForm)">
+                      <div class="row">
+                        <div class="input-field col m6 s12">
+                          <input type="text" name="bookTitle" class="validate" ngModel>
+                          <label for="bookTitle">Book Title</label>
+                        </div>
+                        <div class="input-field col m6 s12">
+                          <input name="author" type="text" class="validate" ngModel>
+                          <label for="author">Author</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-field col m6 s12">
+                          <input type="text" name="coverURL" class="validate" ngModel>
+                          <label for="coverURL">Book Cover URL</label>
+                        </div>
+                        <div class="input-field col s12">
+                          <textarea id="description" name="description" class="materialize-textarea" ngModel></textarea>
+                          <label for="description">Description</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <button type="submit" class="btn btn-flat cyan darken-4 waves-effect waves-light white-text">Add</button>
+                          <button type="button" (click)="hideNewBookUI()" class="btn btn-flat red darken-4 waves-effect waves-light white-text">Cancel</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col l6 m6 s12">
+                <h4>Borrowed Books</h4>
+                <div class="divider"></div>
+                <ul class="collection">
+                  <li class="collection-item avatar">
+                    <img src="images/yuna.jpg" alt="" class="circle">
+                    <span class="title">Title</span>
+                    <p>First Line <br>
+                       Second Line
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                  </li>
+                </ul>
+                <button type="submit" class="btn btn-flat cyan darken-4 waves-effect waves-light white-text">Request a Book</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--footer-->
+  <footer class="page-footer cyan darken-3">
+      <div class="container">
+          <div class="row">
+              <div class="col l6 s12">
+                  <h5 class="white-text">BookTradingClub</h5>
+                  <p class="grey-text text-lighten-4">You can contact us at uuid@uuid.com!</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Contact</h5>
+                  <ul>
+                      <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
+                      <li><a class="grey-text text-lighten-3" href="#!">GitHub</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="footer-copyright cyan darken-4">
+          <div class="container">
+              © 2017 Copyright BookTradingClub
+          </div>
+      </div>
+  </footer>
+</body>
